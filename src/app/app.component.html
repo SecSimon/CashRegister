@@ -3,17 +3,17 @@
     <mat-drawer #drawer style="height: 100%;" mode="over">
       <mat-selection-list [multiple]="false" (selectionChange)="Page = $event.option.value; drawer.toggle();">
         <mat-list-option *ngFor="let page of GetPages()" [value]="page">
-          {{GetPageName(page)}}
+          <span style="font-size: x-large;">{{GetPageName(page)}}</span>
         </mat-list-option>
       </mat-selection-list>
       <footer>
         <mat-list>
           <input hidden type="file" accept=".json" #configUploader (change)="dataService.Import($event)"/>
           <mat-list-item (click)="configUploader.click(); drawer.toggle();">
-            Import
+            <span style="font-size: x-large;">Import</span>
           </mat-list-item>
           <mat-list-item (click)="dataService.Export(); drawer.toggle();">
-            Export
+            <span style="font-size: x-large;">Export</span>
           </mat-list-item>
         </mat-list>
       </footer>

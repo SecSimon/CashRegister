@@ -1,2 +1,6 @@
 @import 'src/stylesPropList.scss';
 @import 'src/stylesReorderList.scss';
+
+mat-list-item {
+  touch-action: auto !important;
+}

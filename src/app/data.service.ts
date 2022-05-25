@@ -131,6 +131,7 @@ export class DataService {
   public AddOrder(items: IBasketItem[], total: number) {
     this.Orders.push({ Date: Date.now(), Items: items, Total: total });
     this.Save();
+    return this.Orders[this.Orders.length-1];
   }
 
   public DeleteOrder(order: IOrder) {
@@ -144,6 +145,7 @@ export class DataService {
   public AddCategory() {
     this.Categories.push({ ID: uuidv4(), Name: 'Kategorie' });
     this.Save();
+    return this.Categories[this.Categories.length-1];
   }
 
   public DeleteCategory(cat: ICategory) {
@@ -157,6 +159,7 @@ export class DataService {
   public AddProduct() {
     this.Products.push({ Name: '', Price: 0 , CategoryIDs: []});
     this.Save();
+    return this.Products[this.Products.length-1];
   }
 
   public DeleteProduct(product: IProduct) {
@@ -170,6 +173,7 @@ export class DataService {
   public AddDiscount() {
     this.Discounts.push({ Name: '', Percent: 0 });
     this.Save();
+    return this.Discounts[this.Discounts.length-1];
   }
 
   public DeleteDiscount(dis: IDiscount) {

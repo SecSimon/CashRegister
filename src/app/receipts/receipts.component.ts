@@ -42,6 +42,7 @@ export class ReceiptsComponent implements OnInit {
       let addSummary = (date: number, orders: IOrder[]) => {
         let sum = 0; 
         orders.forEach(x => sum += x.Total);
+        orders.reverse();
         this.OrderSummary.push({ Date: date, Orders: orders, Total: sum });
       };
 

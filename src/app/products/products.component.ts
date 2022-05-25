@@ -32,7 +32,33 @@ export class ProductsComponent implements OnInit {
     moveItemInArray(selectedArray, event.previousIndex, event.currentIndex);
   }
 
-  public Log(event: any) {
-    console.log(event);
+  public AddCategory() {
+    const item = this.dataService.AddCategory();
+    this.selectedItem = item;
+  }
+
+  public DeleteCategory(cat: ICategory) {
+    this.dataService.DeleteCategory(cat);
+    if (this.selectedItem == cat) this.selectedItem = null;
+  }
+
+  public AddProduct() {
+    const item = this.dataService.AddProduct();
+    this.selectedItem = item;
+  }
+
+  public DeleteProduct(prod: IProduct) {
+    this.dataService.DeleteProduct(prod);
+    if (this.selectedItem == prod) this.selectedItem = null;
+  }
+
+  public AddDiscount() {
+    const item = this.dataService.AddDiscount();
+    this.selectedItem = item;
+  }
+
+  public DeleteDiscount(dis: IDiscount) {
+    this.dataService.DeleteDiscount(dis);
+    if (this.selectedItem == dis) this.selectedItem = null;
   }
 }

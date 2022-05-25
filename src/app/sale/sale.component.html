@@ -14,19 +14,19 @@
       </mat-form-field>
     </mat-toolbar>
 
-    <div style="margin: 5px; display: flex;">
+    <div style="margin: 5px; display: block;">
       <button mat-raised-button *ngFor="let product of Products" class="item" (click)="AddItemToBasket(product)">
-        <span style="font-size: large;">{{product.Name}}</span>
+        <span style="font-size: x-large;">{{product.Name}}</span>
         <hr>
-        {{product.Price | number : '1.2-2'}} €
+        <span style="font-size: large;">{{product.Price | number : '1.2-2'}} €</span>
       </button>
     </div>
 
     <div style="margin: 5px; display: flex;">
       <button mat-raised-button *ngFor="let discount of dataService.Discounts" class="item" (click)="AddItemToBasket(discount)">
-        <span style="font-size: large; color: red;">{{discount.Percent | number}} %</span>
+        <span style="font-size: x-large; color: red;">{{discount.Percent | number}} %</span>
         <hr>
-        <span>{{discount.Name}}</span>
+        <span style="font-size: large;">{{discount.Name}}</span>
       </button>
     </div>
   </div>
@@ -40,7 +40,7 @@
         <mat-icon>delete</mat-icon>
       </button>
     </mat-toolbar>
-    <div style="margin: 5px;">
+    <div style="margin: 5px; font-size: large;">
       <div>
         <table>
           <tr style="height: 50px;" *ngFor="let item of Basket">
@@ -64,11 +64,11 @@
     </div>
     <footer>
       <div style="margin: 5px;">
-        <div style="font-size: larger; font-weight: bold;">
+        <div style="font-size: x-large; font-weight: bold;">
           <span>Gesamt</span> <span style="float: right;">{{GetBasketTotal() | number : '1.2-2'}} €</span>
         </div>
         <div style="margin-top: 10px;">
-          <button mat-raised-button style="padding: 5px; width: -webkit-fill-available;" (click)="Pay()">Bezahlen</button>
+          <button mat-raised-button style="font-size: x-large; padding: 5px; width: -webkit-fill-available;" (click)="Pay()">Bezahlen</button>
         </div>
       </div>
     </footer>

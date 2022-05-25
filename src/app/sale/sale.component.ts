@@ -74,18 +74,20 @@ export class SaleComponent implements OnInit {
   }
 
   public Pay() {
-    let data: IPayDialogData = { Total: this.GetBasketTotal() };
-    if (data.Total > 0) {
-      this.dialog.open(PayDialogComponent, { hasBackdrop: false, data: data }).afterClosed().subscribe(res => {
-        if (res) {
-          this.dataService.AddOrder(this.Basket, data.Total);
-          this.Basket = [];
-        }
-      });
-    }
-    else {
-      this.dataService.AddOrder(this.Basket, data.Total);
-      this.Basket = [];
+    if (this.Basket.length > 0) {
+      let data: IPayDialogData = { Total: this.GetBasketTotal() };
+      if (data.Total > 0) {
+        this.dialog.open(PayDialogComponent, { hasBackdrop: false, data: data }).afterClosed().subscribe(res => {
+          if (res) {
+            this.dataService.AddOrder(this.Basket, data.Total);
+            this.Basket = [];
+          }
+        });
+      }
+      else {
+        this.dataService.AddOrder(this.Basket, data.Total);
+        this.Basket = [];
+      }
     }
   }
 }
