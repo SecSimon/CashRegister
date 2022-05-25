@@ -4,27 +4,37 @@
       <button mat-icon-button class="toolbar-icon" (click)="showSideNav.emit()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My App</span>
-      <!--
+      <span>Kasse</span>
       <span class="toolbar-spacer"></span>
-      <button mat-icon-button class="toolbar-icon favorite-icon" >
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="toolbar-icon">
-        <mat-icon>share</mat-icon>
-      </button>
-    -->
+      <mat-form-field appearance="fill" style="font-size: small; margin-top: 15px; margin-right: -10px; width: 150px;">
+        <mat-label>Kategorie</mat-label>
+        <mat-select [(ngModel)]="SelectedCategory">
+          <mat-option *ngFor="let cat of dataService.Categories" [value]="cat">{{cat.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-toolbar>
-    <footer>
-      test
-    </footer>
+
+    <div style="margin: 5px; display: flex;">
+      <button mat-raised-button *ngFor="let product of Products" class="item" (click)="AddItemToBasket(product)">
+        <span style="font-size: large;">{{product.Name}}</span>
+        <hr>
+        {{product.Price | number : '1.2-2'}} €
+      </button>
+    </div>
+
+    <div style="margin: 5px; display: flex;">
+      <button mat-raised-button *ngFor="let discount of dataService.Discounts" class="item" (click)="AddItemToBasket(discount)">
+        <span style="font-size: large; color: red;">{{discount.Percent | number}} %</span>
+        <hr>
+        <span>{{discount.Name}}</span>
+      </button>
+    </div>
   </div>
   <div class="columnM" style="background-color: gray; height: 100%;">
-  
   </div>
   <div class="column2">
     <mat-toolbar>
-      <span>Basket</span>
+      <span>Warenkorb</span>
       <span class="toolbar-spacer"></span>
       <button mat-icon-button class="toolbar-icon" (click)="Basket = []">
         <mat-icon>delete</mat-icon>
@@ -40,8 +50,14 @@
               </button>        
             </td>
             <td style="min-width: 30px; text-align: center;">{{item.Quanity}}</td>
-            <td style="width: 90%;">{{item.Name}}</td>
-            <td>{{item.Total | number : '1.2-2'}}</td>
+            <ng-container *ngIf="item.Product">
+              <td style="width: 90%;">{{item.Product?.Name}}</td>
+              <td style="text-align: right;">{{item.Total | number : '1.2-2'}}</td>
+            </ng-container>
+            <ng-container *ngIf="item.Discount">
+              <td style="width: 90%;">{{item.Discount?.Name}}, {{item.Discount.Percent}} %</td>
+              <td style="text-align: right;"></td>
+            </ng-container>
           </tr>
         </table>
       </div>
@@ -49,25 +65,12 @@
     <footer>
       <div style="margin: 5px;">
         <div style="font-size: larger; font-weight: bold;">
-          <span>Total</span> <span style="float: right;">{{GetBasketTotal() | number : '1.2-2'}} €</span>
+          <span>Gesamt</span> <span style="float: right;">{{GetBasketTotal() | number : '1.2-2'}} €</span>
         </div>
         <div style="margin-top: 10px;">
-          <button mat-raised-button style="padding: 5px; width: -webkit-fill-available;">Pay</button>
+          <button mat-raised-button style="padding: 5px; width: -webkit-fill-available;" (click)="Pay()">Bezahlen</button>
         </div>
       </div>
-      <!--
-      <div style="margin: 5px;">
-        <div>
-          items
-        </div>
-        <div class="total-container">
-          <span>Total</span> <span style="float: right;">200.12 €</span>
-        </div>
-        <div class="pay-container">
-          <button mat-raised-button style="width: 290px; padding: 5px;">Pay</button>
-        </div>
-      </div>
-      -->
     </footer>
   </div>
 </div>

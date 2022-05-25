@@ -1,10 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
-export interface IBasketItem {
-  Quanity: number;
-  Name: string;
-  Total: number;
-}
+import { MatDialog } from '@angular/material/dialog';
+import { DataService, IBasketItem, ICategory, IDiscount, IProduct } from '../data.service';
+import { LocalStorageService, LocStorageKeys } from '../local-storage.service';
+import { IPayDialogData, PayDialogComponent } from '../pay-dialog/pay-dialog.component';
 
 @Component({
   selector: 'app-sale',
@@ -13,29 +11,47 @@ export interface IBasketItem {
 })
 export class SaleComponent implements OnInit {
 
-  public Basket: IBasketItem[] = [
-    {
-      Quanity: 1,
-      Name: 'Käse 100g',
-      Total: 2.90
-    },
-    {
-      Quanity: 3,
-      Name: 'Bratwurstsemmel',
-      Total: 5
-    },
-    {
-      Quanity: 1,
-      Name: 'Steak',
-      Total: 4.5
-    }
-  ];
+  public Basket: IBasketItem[] = [];
+  public get SelectedCategory(): ICategory {
+    const catStr = this.locStorage.Get(LocStorageKeys.SelectedCategoryID);
+    if (catStr) return this.dataService.Categories.find(x => x.ID == catStr);
+    return null;
+  }
+
+  public set SelectedCategory(val: ICategory) {
+    this.locStorage.Set(LocStorageKeys.SelectedCategoryID, val?.ID as string);
+  }
+  
+  public get Products(): IProduct[] {
+    if (!this.SelectedCategory) return [];
+    return this.dataService.Products.filter(x => x.CategoryIDs.includes(this.SelectedCategory?.ID));
+  }
 
   @Output() public showSideNav = new EventEmitter();
 
-  constructor() { }
+  constructor(public dataService: DataService, private locStorage: LocalStorageService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    if (!this.SelectedCategory && this.dataService.Categories.length > 0) this.SelectedCategory = this.dataService.Categories[0];
+  }
+
+  ngOnDestroy() {
+    this.dataService.Save();
+  }
+
+  public AddItemToBasket(item: IProduct | IDiscount) {
+    this.Basket
+    const existing = this.Basket.find(x => x.Product == item || x.Discount == item);
+    if (existing) {
+      if (existing.Product) {
+        existing.Quanity = existing.Quanity + 1;
+        existing.Total = existing.Quanity * existing.Product.Price;
+      }
+    }
+    else {
+      if (this.dataService.IsProduct(item)) this.Basket.push({ Quanity: 1, Product: item, Total: item.Price });
+      else if (this.dataService.IsDiscount(item) && this.Basket.filter(x => x.Discount).length == 0) this.Basket.push({ Quanity: 1, Discount: item, Total: 0 });
+    }
   }
 
   public DeleteItem(item: IBasketItem) {
@@ -47,7 +63,29 @@ export class SaleComponent implements OnInit {
 
   public GetBasketTotal() {
     let sum = 0;
-    this.Basket.forEach(x => sum += x.Total);
+    let discount = null;
+    this.Basket.forEach(x => {
+      if (x.Product) sum += x.Total;
+      else if (x.Discount) discount = x.Discount.Percent;
+    });
+    
+    if (discount) sum = (1-(discount/100))*sum;
     return sum;
+  }
+
+  public Pay() {
+    let data: IPayDialogData = { Total: this.GetBasketTotal() };
+    if (data.Total > 0) {
+      this.dialog.open(PayDialogComponent, { hasBackdrop: false, data: data }).afterClosed().subscribe(res => {
+        if (res) {
+          this.dataService.AddOrder(this.Basket, data.Total);
+          this.Basket = [];
+        }
+      });
+    }
+    else {
+      this.dataService.AddOrder(this.Basket, data.Total);
+      this.Basket = [];
+    }
   }
 }

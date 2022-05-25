@@ -3,24 +3,75 @@
     <button mat-icon-button class="toolbar-icon" (click)="showSideNav.emit()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
+    <span>Kasse</span>
   </mat-toolbar>
   
   <div class="row">
-    <div class="column1">
-      <mat-list cdkDropList (cdkDropListDropped)="drop($event)" class="prop-list reorder-list">
-        <div mat-subheader>Products <button mat-icon-button (click)="AddProduct()" matTooltip="{{'general.Add' | translate}}" matTooltipShowDelay="1000" style="margin-left: 15px;"><mat-icon>add</mat-icon></button></div>
-        <mat-list-item *ngFor="let product of dataService.Products" (click)="selectedProduct = product" cdkDrag
-        [class.highlight-dark]="selectedProduct === product" matTooltip="{{product.DisplayName | translate}}" matTooltipShowDelay="1000">
+    <div class="column1" style="max-height: 500px; overflow: auto;">
+      <mat-list cdkDropList (cdkDropListDropped)="drop($event, dataService.Categories)" class="prop-list reorder-list">
+        <div mat-subheader>Kategorien <button mat-icon-button (click)="dataService.AddCategory()" matTooltip="Hinzufügen" matTooltipShowDelay="1000" style="margin-left: 15px;"><mat-icon>add</mat-icon></button></div>
+        <mat-list-item *ngFor="let cat of dataService.Categories" (click)="selectedItem = cat" cdkDrag
+        [class.highlight-dark]="selectedItem === cat" matTooltip="{{cat.Name}}" matTooltipShowDelay="1000">
           <mat-icon mat-list-icon>chevron_right</mat-icon>
-          <div mat-line>{{product.DisplayName | translate}}</div>
-          <div mat-line>214</div>
-          <button mat-icon-button style="margin-left: auto;" (click)="DeleteProdut(product)" matTooltip="{{'general.Delete' | translate}}" matTooltipShowDelay="1000"><mat-icon>delete</mat-icon></button>
+          <div mat-line>{{cat.Name}}</div>
+          <button mat-icon-button style="margin-left: auto;" (click)="dataService.DeleteCategory(cat)" matTooltip="Löschen" matTooltipShowDelay="1000"><mat-icon>delete</mat-icon></button>
+        </mat-list-item>
+      </mat-list>
+
+      <mat-list cdkDropList (cdkDropListDropped)="drop($event, dataService.Products)" class="prop-list reorder-list" style="margin-top: 20px;">
+        <div mat-subheader>Produkte <button mat-icon-button (click)="dataService.AddProduct()" matTooltip="Hinzufügen" matTooltipShowDelay="1000" style="margin-left: 15px;"><mat-icon>add</mat-icon></button></div>
+        <mat-list-item *ngFor="let product of dataService.Products" (click)="selectedItem = product" cdkDrag
+        [class.highlight-dark]="selectedItem === product" matTooltip="{{product.Name}}" matTooltipShowDelay="1000">
+          <mat-icon mat-list-icon>chevron_right</mat-icon>
+          <div mat-line>{{product.Name}}</div>
+          <div mat-line>{{product.Price | number : '1.2-2'}} €</div>
+          <button mat-icon-button style="margin-left: auto;" (click)="dataService.DeleteProduct(product)" matTooltip="Löschen" matTooltipShowDelay="1000"><mat-icon>delete</mat-icon></button>
+        </mat-list-item>
+      </mat-list>
+
+      <mat-list cdkDropList (cdkDropListDropped)="drop($event, dataService.Discounts)" class="prop-list reorder-list" style="margin-top: 20px;">
+        <div mat-subheader>Rabatte <button mat-icon-button (click)="dataService.AddDiscount()" matTooltip="Hinzufügen" matTooltipShowDelay="1000" style="margin-left: 15px;"><mat-icon>add</mat-icon></button></div>
+        <mat-list-item *ngFor="let discount of dataService.Discounts" (click)="selectedItem = discount" cdkDrag
+        [class.highlight-dark]="selectedItem === discount" matTooltip="{{discount.Name}}" matTooltipShowDelay="1000">
+          <mat-icon mat-list-icon>chevron_right</mat-icon>
+          <div mat-line>{{discount.Name}}</div>
+          <div mat-line>{{discount.Percent | number}} %</div>
+          <button mat-icon-button style="margin-left: auto;" (click)="dataService.DeleteDiscount(discount)" matTooltip="Löschen" matTooltipShowDelay="1000"><mat-icon>delete</mat-icon></button>
         </mat-list-item>
       </mat-list>
     </div>
     <div class="column2">
-      test
+      <div *ngIf="selectedItem" style="margin: 10px;">
+        <mat-form-field appearance="fill" style="width: 300px;">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="selectedItem.Name">
+          <button *ngIf="selectedItem.Name" matSuffix mat-icon-button (click)="selectedItem.Name=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <br/>
+        <ng-container *ngIf="dataService.IsProduct(selectedItem)">
+          <mat-form-field appearance="fill" style="width: 100px;">
+            <mat-label>Preis</mat-label>
+            <input matInput type="number" style="text-align: right;" [ngModel]="selectedItem.Price | number : '1.2-2'" (ngModelChange)="selectedItem.Price = $event">
+            <span matSuffix>€</span>
+          </mat-form-field>
+          <br/>
+          <mat-form-field appearance="fill" style="width: 300px;">
+            <mat-label>Kategorien</mat-label>
+            <mat-select multiple [(ngModel)]="selectedItem.CategoryIDs">
+              <mat-option *ngFor="let cat of dataService.Categories" [value]="cat.ID">{{cat.Name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+        <ng-container *ngIf="dataService.IsDiscount(selectedItem)">
+          <mat-form-field appearance="fill" style="width: 100px;">
+            <mat-label>Rabatt</mat-label>
+            <input matInput type="number" style="text-align: right;" [ngModel]="selectedItem.Percent" (ngModelChange)="SetDiscount($event)">
+            <span matSuffix>%</span>
+          </mat-form-field>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>

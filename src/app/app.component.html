@@ -1,16 +1,28 @@
 <div style="height: 100%;">
   <mat-drawer-container style="height: 100%;" autosize>
     <mat-drawer #drawer style="height: 100%;" mode="over">
-      <mat-selection-list #shoes [multiple]="false" (selectionChange)="Page = $event.option.value; drawer.toggle();">
+      <mat-selection-list [multiple]="false" (selectionChange)="Page = $event.option.value; drawer.toggle();">
         <mat-list-option *ngFor="let page of GetPages()" [value]="page">
           {{GetPageName(page)}}
         </mat-list-option>
       </mat-selection-list>
+      <footer>
+        <mat-list>
+          <input hidden type="file" accept=".json" #configUploader (change)="dataService.Import($event)"/>
+          <mat-list-item (click)="configUploader.click(); drawer.toggle();">
+            Import
+          </mat-list-item>
+          <mat-list-item (click)="dataService.Export(); drawer.toggle();">
+            Export
+          </mat-list-item>
+        </mat-list>
+      </footer>
     </mat-drawer>
   
-    <div class="example-sidenav-content">
+    <div style="height: 100%;">
       <app-sale *ngIf="Page == 1" style="height: 100%;" (showSideNav)="drawer.toggle()"></app-sale>
-      <app-products *ngIf="Page == 2" style="height: 100%;" (showSideNav)="drawer.toggle()"></app-products>
+      <app-receipts *ngIf="Page == 2" style="height: 100%;" (showSideNav)="drawer.toggle()"></app-receipts>
+      <app-products *ngIf="Page == 3" style="height: 100%;" (showSideNav)="drawer.toggle()"></app-products>
     </div>
   </mat-drawer-container>
 </div>

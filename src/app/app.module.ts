@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -41,15 +42,20 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SaleComponent } from './sale/sale.component';
 import { ProductsComponent } from './products/products.component';
+import { PayDialogComponent } from './pay-dialog/pay-dialog.component';
+import { ReceiptsComponent } from './receipts/receipts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SaleComponent,
-    ProductsComponent
+    ProductsComponent,
+    PayDialogComponent,
+    ReceiptsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
 
     CdkTableModule,

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { DataService } from './data.service';
 
 export enum Pages {
   Sale = 1,
-  Products = 2
+  Receipts = 2,
+  Products = 3
 }
 
 @Component({
@@ -11,21 +13,24 @@ export enum Pages {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Cash Register';
+  title = 'Kasse';
 
   public Page = Pages.Sale;
 
+  constructor(public dataService: DataService) {}
+
+  ngOnDestroy() {
+    this.dataService.Save();
+  }
+
   public GetPages() {
-    return [Pages.Sale, Pages.Products];
+    return [Pages.Sale, Pages.Receipts, Pages.Products];
   }
 
   public GetPageName(page: Pages) {
-    if (page == Pages.Sale) return 'Sale';
-    if (page == Pages.Products) return 'Products';
+    if (page == Pages.Sale) return 'Verkauf';
+    if (page == Pages.Receipts) return 'Belege';
+    if (page == Pages.Products) return 'Produkte';
     return '';
-  }
-
-  public Debug(event: any) {
-    console.log(event);
   }
 }
