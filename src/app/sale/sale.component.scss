@@ -1,0 +1,44 @@
+.column1 {
+  float: left;
+  width: calc(100% - 300px - 3px);
+}
+
+.columnM {
+  float: left;
+  width: 3px;
+}
+
+.column2 {
+  float: left;
+  width: 300px;
+  max-width: 300px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: inherit;
+}
+
+.total-container {
+  width: 100%;
+  position: fixed;
+  bottom: 50px;
+}
+
+.pay-container {
+  width: 100%;
+  position: fixed;
+  bottom: 5px;
+}

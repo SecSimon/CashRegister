@@ -1,0 +1,26 @@
+<div style="height: 100%;">
+  <mat-toolbar>
+    <button mat-icon-button class="toolbar-icon" (click)="showSideNav.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+  </mat-toolbar>
+  
+  <div class="row">
+    <div class="column1">
+      <mat-list cdkDropList (cdkDropListDropped)="drop($event)" class="prop-list reorder-list">
+        <div mat-subheader>Products <button mat-icon-button (click)="AddProduct()" matTooltip="{{'general.Add' | translate}}" matTooltipShowDelay="1000" style="margin-left: 15px;"><mat-icon>add</mat-icon></button></div>
+        <mat-list-item *ngFor="let product of dataService.Products" (click)="selectedProduct = product" cdkDrag
+        [class.highlight-dark]="selectedProduct === product" matTooltip="{{product.DisplayName | translate}}" matTooltipShowDelay="1000">
+          <mat-icon mat-list-icon>chevron_right</mat-icon>
+          <div mat-line>{{product.DisplayName | translate}}</div>
+          <div mat-line>214</div>
+          <button mat-icon-button style="margin-left: auto;" (click)="DeleteProdut(product)" matTooltip="{{'general.Delete' | translate}}" matTooltipShowDelay="1000"><mat-icon>delete</mat-icon></button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="column2">
+      test
+    </div>
+  </div>
+</div>
