@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface IPayDialogData {
   Total: number;
+  Cash: number;
+  Change: number;
 }
 
 @Component({
@@ -12,11 +14,17 @@ export interface IPayDialogData {
 })
 export class PayDialogComponent implements OnInit {
 
-  public Cash: number = 0;
-
   constructor(public dialogRef: MatDialogRef<PayDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: IPayDialogData) { }
 
   ngOnInit(): void {
+  }
 
+  public CalcChange(): number {
+    this.data.Change = this.data.Cash - this.data.Total;
+    return this.data.Change;
+  }
+
+  public Close() {
+    if (this.data.Cash == 0) this.data.Cash = this.data.Total;
   }
 }

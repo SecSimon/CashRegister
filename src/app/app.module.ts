@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -44,6 +44,14 @@ import { SaleComponent } from './sale/sale.component';
 import { ProductsComponent } from './products/products.component';
 import { PayDialogComponent } from './pay-dialog/pay-dialog.component';
 import { ReceiptsComponent } from './receipts/receipts.component';
+
+import { AngularSplitModule } from 'angular-split';
+
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
+
+registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
 @NgModule({
   declarations: [
@@ -93,9 +101,13 @@ import { ReceiptsComponent } from './receipts/receipts.component';
     MatTableModule,
     MatSortModule,
     MatStepperModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+
+    AngularSplitModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'de-DE' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

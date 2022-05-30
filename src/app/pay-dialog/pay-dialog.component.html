@@ -4,12 +4,12 @@
     <table>
       <tr>
         <td>Zu bezahlen:</td>
-        <td style="text-align: right;">{{ data.Total | number : '1.2-2'}} €</td>
+        <td style="text-align: right;">{{ data.Total | currency:'EUR'}}</td>
       </tr>
       <tr>
         <td>Erhalten:</td>
         <td>
-          <input matInput type="number" [(ngModel)]="Cash" style="text-align: right; width: 100px; background-color: white; color: black;">
+          <input matInput type="number" [(ngModel)]="data.Cash" style="text-align: right; width: 100px; background-color: white; color: black;"> €
         </td>
       </tr>
     </table>
@@ -17,27 +17,27 @@
     <table>
       <tr>
         <td *ngFor="let val of [5,10,15,20]">
-          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="Cash = val">{{val}} €</button>
+          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Cash = val">{{val}} €</button>
         </td>
       </tr>
       <tr>
         <td *ngFor="let val of [25,30,35,40]">
-          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="Cash = val">{{val}} €</button>
+          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Cash = val">{{val}} €</button>
         </td>
       </tr>
       <tr>
         <td *ngFor="let val of [45,50]">
-          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="Cash = val">{{val}} €</button>
+          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Cash = val">{{val}} €</button>
         </td>
         <td colspan="2">
-          <button mat-raised-button style="margin-right: 5px; height: 50px; width: -webkit-fill-available;" (click)="Cash = data.Total">Passend</button>
+          <button mat-raised-button style="margin-right: 5px; height: 50px; width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
         </td>
       </tr>
     </table>
     <table style="margin-top: 5px;">
       <tr style="font-weight: bold;">
         <td>Wechselgeld:</td>
-        <td style="width: 100px; text-align: right;" *ngIf="Cash >= data.Total">{{ Cash-data.Total | number : '1.2-2'}} €</td>
+        <td style="width: 100px; text-align: right;" *ngIf="CalcChange() >= 0">{{ data.Change | currency:'EUR'}}</td>
       </tr>
     </table>
     <br/>
@@ -46,6 +46,6 @@
 <mat-dialog-actions align="end">
   <ng-container>
     <button mat-button mat-dialog-close cdkFocusInitial>Abbrechen</button>
-    <button mat-button [mat-dialog-close]="true">Bezahlen</button>
+    <button mat-button [mat-dialog-close]="true" (click)="Close()">Bezahlen</button>
   </ng-container>
 </mat-dialog-actions>

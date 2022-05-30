@@ -1,34 +1,5 @@
-.column1 {
-  float: left;
-  width: calc(100% - 300px - 3px);
-}
-
-.columnM {
-  float: left;
-  width: 3px;
-}
-
-.column2 {
-  float: left;
-  width: 300px;
-  max-width: 300px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .toolbar-spacer {
   flex: 1 1 auto;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  width: inherit;
 }
 
 .total-container {
@@ -47,4 +18,8 @@ footer {
   margin: 5px;
   border-radius: 10px;
   padding: 5px;
+}
+
+::ng-deep .as-split-gutter {
+  background-color: #424242 !important;
 }

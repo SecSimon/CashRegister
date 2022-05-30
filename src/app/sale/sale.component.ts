@@ -27,6 +27,8 @@ export class SaleComponent implements OnInit {
     return this.dataService.Products.filter(x => x.CategoryIDs.includes(this.SelectedCategory?.ID));
   }
 
+  public LastPayment: IPayDialogData = null;
+
   @Output() public showSideNav = new EventEmitter();
 
   constructor(public dataService: DataService, private locStorage: LocalStorageService, private dialog: MatDialog) { }
@@ -40,7 +42,10 @@ export class SaleComponent implements OnInit {
   }
 
   public AddItemToBasket(item: IProduct | IDiscount) {
-    this.Basket
+    if (this.LastPayment) {
+      this.LastPayment = null;
+      this.Basket = [];
+    }
     const existing = this.Basket.find(x => x.Product == item || x.Discount == item);
     if (existing) {
       if (existing.Product) {
@@ -61,6 +66,11 @@ export class SaleComponent implements OnInit {
     }
   }
 
+  public ClearBasket() {
+    this.Basket = [];
+    this.LastPayment = null;
+  }
+
   public GetBasketTotal() {
     let sum = 0;
     let discount = null;
@@ -75,12 +85,12 @@ export class SaleComponent implements OnInit {
 
   public Pay() {
     if (this.Basket.length > 0) {
-      let data: IPayDialogData = { Total: this.GetBasketTotal() };
+      let data: IPayDialogData = { Total: this.GetBasketTotal(), Cash: 0, Change: 0 };
       if (data.Total > 0) {
         this.dialog.open(PayDialogComponent, { hasBackdrop: false, data: data }).afterClosed().subscribe(res => {
           if (res) {
             this.dataService.AddOrder(this.Basket, data.Total);
-            this.Basket = [];
+            this.LastPayment = data;
           }
         });
       }

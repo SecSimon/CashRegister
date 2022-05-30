@@ -24,7 +24,7 @@
         [class.highlight-dark]="selectedItem === product" matTooltip="{{product.Name}}" matTooltipShowDelay="1000">
           <mat-icon mat-list-icon cdkDragHandle>chevron_right</mat-icon>
           <div mat-line>{{product.Name}}</div>
-          <div mat-line>{{product.Price | number : '1.2-2'}} €</div>
+          <div mat-line>{{product.Price | currency:'EUR'}}</div>
           <button mat-icon-button style="margin-left: auto;" (click)="DeleteProduct(product)" matTooltip="Löschen" matTooltipShowDelay="1000"><mat-icon>delete</mat-icon></button>
         </mat-list-item>
       </mat-list>
@@ -53,7 +53,7 @@
         <ng-container *ngIf="dataService.IsProduct(selectedItem)">
           <mat-form-field appearance="fill" style="width: 100px;">
             <mat-label>Preis</mat-label>
-            <input matInput type="number" style="text-align: right;" [ngModel]="selectedItem.Price | number : '1.2-2'" (ngModelChange)="selectedItem.Price = $event">
+            <input matInput type="number" style="text-align: right;" [(ngModel)]="selectedItem.Price">
             <span matSuffix>€</span>
           </mat-form-field>
           <br/>
