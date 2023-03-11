@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CountDialogComponent, ICountDialogData } from '../count-dialog/count-dialog.component';
 import { DataService, IBasketItem, ICategory, IDiscount, IProduct } from '../data.service';
 import { LocalStorageService, LocStorageKeys } from '../local-storage.service';
 import { IPayDialogData, PayDialogComponent } from '../pay-dialog/pay-dialog.component';
@@ -41,21 +42,46 @@ export class SaleComponent implements OnInit {
     this.dataService.Save();
   }
 
-  public AddItemToBasket(item: IProduct | IDiscount) {
-    if (this.LastPayment) {
-      this.LastPayment = null;
-      this.Basket = [];
-    }
+  private isLongPress: boolean = false;
+  private isLongPressTimer: NodeJS.Timeout = null;
+  public AddItemToBasketMouseDown() {
+    this.isLongPress = false;
+    this.isLongPressTimer = setTimeout(() => {
+      this.isLongPress = true;
+    }, 500);
+  }
+
+  public AddItemToBasketMouseUp(item: IProduct | IDiscount) {
+    clearTimeout(this.isLongPressTimer);
+
     const existing = this.Basket.find(x => x.Product == item || x.Discount == item);
-    if (existing) {
-      if (existing.Product) {
-        existing.Quanity = existing.Quanity + 1;
-        existing.Total = existing.Quanity * existing.Product.Price;
+    const addItem = (quantity: number) => {
+      if (this.LastPayment) {
+        this.LastPayment = null;
+        this.Basket = [];
       }
+      if (existing) {
+        if (existing.Product) {
+          existing.Quantity = quantity;
+          existing.Total = existing.Quantity * existing.Product.Price;
+        }
+      }
+      else {
+        if (this.dataService.IsProduct(item)) this.Basket.push({ Quantity: quantity, Product: item, Total: item.Price });
+        else if (this.dataService.IsDiscount(item) && this.Basket.filter(x => x.Discount).length == 0) this.Basket.push({ Quantity: 1, Discount: item, Total: 0 });
+      }
+    };
+
+    if (this.isLongPress) {
+      const data: ICountDialogData = { Name: item.Name, Quantity: existing ? existing.Quantity : 1 };
+      this.dialog.open(CountDialogComponent, { hasBackdrop: false, data: data }).afterClosed().subscribe(res => {
+        if (res) {
+          addItem(data.Quantity);
+        }
+      });
     }
     else {
-      if (this.dataService.IsProduct(item)) this.Basket.push({ Quanity: 1, Product: item, Total: item.Price });
-      else if (this.dataService.IsDiscount(item) && this.Basket.filter(x => x.Discount).length == 0) this.Basket.push({ Quanity: 1, Discount: item, Total: 0 });
+      addItem(existing ? existing.Quantity+1 : 1);
     }
   }
 
@@ -85,7 +111,7 @@ export class SaleComponent implements OnInit {
 
   public Pay() {
     if (this.Basket.length > 0) {
-      let data: IPayDialogData = { Total: this.GetBasketTotal(), Cash: 0, Change: 0 };
+      const data: IPayDialogData = { Total: this.GetBasketTotal(), Cash: 0, Change: 0 };
       if (data.Total > 0) {
         this.dialog.open(PayDialogComponent, { hasBackdrop: false, data: data }).afterClosed().subscribe(res => {
           if (res) {

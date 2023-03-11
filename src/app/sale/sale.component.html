@@ -16,7 +16,7 @@
       </mat-toolbar>
   
       <div style="margin: 5px; display: block;">
-        <button mat-raised-button *ngFor="let product of Products" class="item" (click)="AddItemToBasket(product)">
+        <button mat-raised-button *ngFor="let product of Products" class="item" (mousedown)="AddItemToBasketMouseDown()" (mouseup)="AddItemToBasketMouseUp(product)">
           <span style="font-size: x-large;">{{product.Name}}</span>
           <hr>
           <span style="font-size: large;">{{product.Price | currency:'EUR'}}</span>
@@ -24,7 +24,7 @@
       </div>
   
       <div style="margin: 5px; display: flex;">
-        <button mat-raised-button *ngFor="let discount of dataService.Discounts" class="item" (click)="AddItemToBasket(discount)">
+        <button mat-raised-button *ngFor="let discount of dataService.Discounts" class="item" (click)="AddItemToBasketMouseUp(discount)">
           <span style="font-size: x-large; color: red;">{{discount.Percent | number}} %</span>
           <hr>
           <span style="font-size: large;">{{discount.Name}}</span>
@@ -40,7 +40,7 @@
         </button>
       </mat-toolbar>
       <div style="margin: 5px; font-size: large; height: calc(100% - 110px - 64px - 10px)">
-        <div>
+        <div style="position: relative; width: 100%; height: 100%;">
           <table [style.opacity]="LastPayment ? 0.5 : 1">
             <tr style="height: 50px;" *ngFor="let item of Basket">
               <td>
@@ -48,7 +48,7 @@
                   <mat-icon>delete</mat-icon>
                 </button>        
               </td>
-              <td style="min-width: 30px; text-align: center;">{{item.Quanity}}</td>
+              <td style="min-width: 30px; text-align: center;">{{item.Quantity}}</td>
               <ng-container *ngIf="item.Product">
                 <td style="width: 90%;">{{item.Product?.Name}}</td>
                 <td style="text-align: right;">{{item.Total | currency:'EUR'}}</td>
@@ -59,6 +59,7 @@
               </ng-container>
             </tr>
           </table>
+          <div *ngIf="LastPayment" style="z-index: 2; position: absolute; left: 50%; top: 50%; font-size: xxx-large; transform: translate(-50%, -50%);">Bezahlt</div>
         </div>
       </div>
       <div style="height: 110px;">

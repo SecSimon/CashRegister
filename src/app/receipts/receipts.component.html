@@ -39,7 +39,7 @@
           <td>
             <ul style="margin: 5px; padding-left: 15px;">
               <li *ngFor="let item of order.Items">
-                {{item.Quanity}}x
+                {{item.Quantity}}x
                 <ng-container *ngIf="item.Product">{{item.Product.Name}}</ng-container>
                 <ng-container *ngIf="item.Discount">{{item.Discount.Name}}, {{item.Discount.Percent}} %</ng-container>
               </li>

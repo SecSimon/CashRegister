@@ -21,7 +21,7 @@ export interface IDiscount {
 }
 
 export interface IBasketItem {
-  Quanity: number;
+  Quantity: number;
   Product?: IProduct;
   Discount?: IDiscount;
   Total: number;

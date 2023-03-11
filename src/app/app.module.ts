@@ -50,6 +50,7 @@ import { AngularSplitModule } from 'angular-split';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
+import { CountDialogComponent } from './count-dialog/count-dialog.component';
 
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
@@ -59,7 +60,8 @@ registerLocaleData(localeDe, 'de-DE', localeDeExtra);
     SaleComponent,
     ProductsComponent,
     PayDialogComponent,
-    ReceiptsComponent
+    ReceiptsComponent,
+    CountDialogComponent
   ],
   imports: [
     BrowserModule,
