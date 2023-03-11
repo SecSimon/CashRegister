@@ -133,4 +133,8 @@ export class SaleComponent implements OnInit {
       }
     }
   }
+
+  public GetBasketSize() {
+    return this.Basket.map(x => x.Quantity).reduce((total, x) => total + x, 0);
+  }
 }
