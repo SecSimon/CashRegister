@@ -1,12 +1,28 @@
 {
   "Categories": [
     {
-      "Name": "Grillstand",
-      "ID": "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      "ID": "ed9ec645-7376-453b-85ea-a588032d60a5",
+      "Name": "Ausschank"
+    },
+    {
+      "ID": "bcda24ee-d43a-473d-a3ae-9e29e27f79e4",
+      "Name": "Bar"
     },
     {
       "ID": "5140af08-3ced-486e-98b2-ccf687e40f53",
       "Name": "Brotzeitstand"
+    },
+    {
+      "Name": "Grillstand",
+      "ID": "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+    },
+    {
+      "ID": "3816b9eb-4a57-4323-b89d-2aaadeed1833",
+      "Name": "Kaffee&Kuchen"
+    },
+    {
+      "ID": "f4420e24-adbe-4039-8e9e-5e91439da660",
+      "Name": "Pilsstand"
     }
   ],
   "Products": [
@@ -95,6 +111,123 @@
       "Price": 3.5,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Schnaps",
+      "Price": 3.5,
+      "CategoryIDs": [
+        "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
+      ],
+      "Trigger": "Pfand"
+    },
+    {
+      "Name": "Klopfer",
+      "Price": 2,
+      "CategoryIDs": [
+        "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
+      ]
+    },
+    {
+      "Name": "Jägermeister",
+      "Price": 2.5,
+      "CategoryIDs": [
+        "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
+      ]
+    },
+    {
+      "Name": "Pfand",
+      "Price": 0.5,
+      "CategoryIDs": [
+        "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
+      ]
+    },
+    {
+      "Name": "Pfand Rück",
+      "Price": -0.5,
+      "CategoryIDs": [
+        "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
+      ]
+    },
+    {
+      "Name": "Maß",
+      "Price": 7.7,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5"
+      ]
+    },
+    {
+      "Name": "Halbe",
+      "Price": 3.9,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5"
+      ]
+    },
+    {
+      "Name": "Spezi, Limo, etc.",
+      "Price": 3.3,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5"
+      ]
+    },
+    {
+      "Name": "Wasser",
+      "Price": 2.9,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5"
+      ]
+    },
+    {
+      "Name": "Pils",
+      "Price": 3.5,
+      "CategoryIDs": [
+        "f4420e24-adbe-4039-8e9e-5e91439da660"
+      ]
+    },
+    {
+      "Name": "Weizen",
+      "Price": 4.2,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5",
+        "f4420e24-adbe-4039-8e9e-5e91439da660"
+      ],
+      "Trigger": "Glaspfand"
+    },
+    {
+      "Name": "Glaspfand",
+      "Price": 2,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5",
+        "f4420e24-adbe-4039-8e9e-5e91439da660"
+      ]
+    },
+    {
+      "Name": "Glaspfand Rück",
+      "Price": -2,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5",
+        "f4420e24-adbe-4039-8e9e-5e91439da660"
+      ]
+    },
+    {
+      "Name": "Kaffee",
+      "Price": 2,
+      "CategoryIDs": [
+        "3816b9eb-4a57-4323-b89d-2aaadeed1833"
+      ]
+    },
+    {
+      "Name": "Kuchen/Torte",
+      "Price": 2,
+      "CategoryIDs": [
+        "3816b9eb-4a57-4323-b89d-2aaadeed1833"
+      ]
+    },
+    {
+      "Name": "Muffin",
+      "Price": 1.5,
+      "CategoryIDs": [
+        "3816b9eb-4a57-4323-b89d-2aaadeed1833"
       ]
     }
   ],
