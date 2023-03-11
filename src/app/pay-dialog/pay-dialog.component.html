@@ -17,20 +17,20 @@
     <table>
       <tr>
         <td *ngFor="let val of [5,10,15,20]">
-          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Cash = val">{{val}} €</button>
+          <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
         </td>
       </tr>
       <tr>
         <td *ngFor="let val of [25,30,35,40]">
-          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Cash = val">{{val}} €</button>
+          <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
         </td>
       </tr>
       <tr>
         <td *ngFor="let val of [45,50]">
-          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Cash = val">{{val}} €</button>
+          <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
         </td>
         <td colspan="2">
-          <button mat-raised-button style="margin-right: 5px; height: 50px; width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
+          <button mat-raised-button class="amountBtn" style="width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
         </td>
       </tr>
     </table>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApplicationStateService } from '../application-state.service';
 import { CountDialogComponent, ICountDialogData } from '../count-dialog/count-dialog.component';
 import { DataService, IBasketItem, ICategory, IDiscount, IProduct } from '../data.service';
 import { LocalStorageService, LocStorageKeys } from '../local-storage.service';
@@ -32,7 +33,7 @@ export class SaleComponent implements OnInit {
 
   @Output() public showSideNav = new EventEmitter();
 
-  constructor(public dataService: DataService, private locStorage: LocalStorageService, private dialog: MatDialog) { }
+  constructor(public dataService: DataService, public applicationState: ApplicationStateService, private locStorage: LocalStorageService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (!this.SelectedCategory && this.dataService.Categories.length > 0) this.SelectedCategory = this.dataService.Categories[0];
@@ -67,7 +68,7 @@ export class SaleComponent implements OnInit {
         }
       }
       else {
-        if (this.dataService.IsProduct(item)) this.Basket.push({ Quantity: quantity, Product: item, Total: item.Price });
+        if (this.dataService.IsProduct(item)) this.Basket.push({ Quantity: quantity, Product: item, Total: item.Price * quantity });
         else if (this.dataService.IsDiscount(item) && this.Basket.filter(x => x.Discount).length == 0) this.Basket.push({ Quantity: 1, Discount: item, Total: 0 });
       }
     };
@@ -83,6 +84,12 @@ export class SaleComponent implements OnInit {
     else {
       addItem(existing ? existing.Quantity+1 : 1);
     }
+  }
+
+  public OnContextMenu(event: MouseEvent|PointerEvent, item: IProduct) {
+    this.isLongPress = true;
+    this.AddItemToBasketMouseUp(item);
+    event.preventDefault();
   }
 
   public DeleteItem(item: IBasketItem) {
