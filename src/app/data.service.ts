@@ -4,6 +4,8 @@ import { LocalStorageService, LocStorageKeys } from './local-storage.service';
 import { saveAs } from 'file-saver';
 import { v4 as uuidv4 } from 'uuid';
 
+import defaultConfig from '../assets/default-config-file.json';
+
 export interface ICategory {
   ID: string;
   Name: string;
@@ -182,6 +184,15 @@ export class DataService {
       this.Discounts.splice(index, 1);
       this.Save();
     }
+  }
+
+  public DefaultConfig() {
+    if (defaultConfig.Categories) this.Categories = defaultConfig.Categories;
+    if (defaultConfig.Products) this.Products = defaultConfig.Products;
+    if (defaultConfig.Discounts) this.Discounts = defaultConfig.Discounts;
+
+    this.Save();
+    location.reload();
   }
 
   public IsProduct(object: any): object is IProduct {

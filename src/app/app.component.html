@@ -8,6 +8,9 @@
       </mat-selection-list>
       <footer>
         <mat-list>
+          <mat-list-item (click)="dataService.DefaultConfig(); drawer.toggle();">
+            <span style="font-size: x-large;">Default</span>
+          </mat-list-item>
           <input hidden type="file" accept=".json" #configUploader (change)="dataService.Import($event)"/>
           <mat-list-item (click)="configUploader.click(); drawer.toggle();">
             <span style="font-size: x-large;">Import</span>

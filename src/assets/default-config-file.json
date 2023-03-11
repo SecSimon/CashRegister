@@ -1,0 +1,107 @@
+{
+  "Categories": [
+    {
+      "Name": "Grillstand",
+      "ID": "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+    },
+    {
+      "ID": "5140af08-3ced-486e-98b2-ccf687e40f53",
+      "Name": "Brotzeitstand"
+    }
+  ],
+  "Products": [
+    {
+      "Name": "Bratwurst",
+      "Price": 1.4,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      ]
+    },
+    {
+      "Name": "Bratwurstsemmel",
+      "Price": 3.5,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      ]
+    },
+    {
+      "Name": "Steak",
+      "Price": 4.2,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      ]
+    },
+    {
+      "Name": "Steaksemmel",
+      "Price": 4.9,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      ]
+    },
+    {
+      "Name": "Spitzel",
+      "Price": 1.5,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Breze",
+      "Price": 1.3,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Semmel",
+      "Price": 0.7,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Kraut",
+      "Price": 2.5,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      ]
+    },
+    {
+      "Name": "Kartoffelsalat",
+      "Price": 2.5,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
+      ]
+    },
+    {
+      "Name": "Käse 100g",
+      "Price": 3,
+      "CategoryIDs": [
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Obazda 100g",
+      "Price": 3,
+      "CategoryIDs": [
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Fischsemmel",
+      "Price": 3.5,
+      "CategoryIDs": [
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    }
+  ],
+  "Discounts": [
+    {
+      "Name": "Aktiver Helfer",
+      "Percent": 100
+    }
+  ]
+}
