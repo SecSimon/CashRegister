@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Barzahlung</h2>
-<mat-dialog-content>
-  <div style="font-size: x-large;">
+<mat-dialog-content style="padding: 0 12px;">
+  <div style="font-size: large;">
     <table>
       <tr>
         <td>Zu bezahlen:</td>
@@ -9,27 +9,22 @@
       <tr>
         <td>Erhalten:</td>
         <td>
-          <input matInput type="number" [(ngModel)]="data.Cash" style="text-align: right; width: 100px; background-color: white; color: black;"> €
+          <input matInput type="number" [(ngModel)]="data.Cash" style="text-align: right; width: 60px; background-color: white; color: black;"> €
         </td>
       </tr>
     </table>
   
     <table>
-      <tr>
-        <td *ngFor="let val of [5,10,15,20]">
+      <tr *ngFor="let range of ranges; last as isLast">
+        <td *ngFor="let val of range">
           <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
+        </td>
+        <td *ngIf="isLast && range.length+2<=colCount" colspan="2">
+          <button mat-raised-button class="amountBtn" style="width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
         </td>
       </tr>
-      <tr>
-        <td *ngFor="let val of [25,30,35,40]">
-          <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
-        </td>
-      </tr>
-      <tr>
-        <td *ngFor="let val of [45,50]">
-          <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
-        </td>
-        <td colspan="2">
+      <tr *ngIf="ranges[ranges.length-1].length+2>colCount">
+        <td colspan="100">
           <button mat-raised-button class="amountBtn" style="width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
         </td>
       </tr>

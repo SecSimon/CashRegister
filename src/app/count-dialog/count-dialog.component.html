@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{data.Name}}</h2>
-<mat-dialog-content>
-  <div style="font-size: x-large;">
+<mat-dialog-content style="padding: 0 12px;">
+  <div style="font-size: large;">
     <table>
       <tr>
         <td>Anzahl:</td>
@@ -10,13 +10,18 @@
   
     <table>
       <tr>
-        <td *ngFor="let val of [5,10,15,20]">
+        <td *ngFor="let val of [5,10,15]">
+          <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Quantity = val">{{val}}</button>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let val of [20, 25, 30]">
           <button mat-raised-button style="margin-right: 5px; height: 50px;" (click)="data.Quantity = val">{{val}}</button>
         </td>
       </tr>
     </table>
     <br/>
-    <mat-slider [(ngModel)]="data.Quantity" thumbLabel min="0" max="20" color="primary" style="width: 100%;"></mat-slider>
+    <mat-slider [(ngModel)]="data.Quantity" thumbLabel min="0" max="30" color="primary" style="width: 100%;"></mat-slider>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
