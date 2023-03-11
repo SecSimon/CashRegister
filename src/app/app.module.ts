@@ -51,6 +51,7 @@ import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
 import { CountDialogComponent } from './count-dialog/count-dialog.component';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
@@ -67,6 +68,7 @@ registerLocaleData(localeDe, 'de-DE', localeDeExtra);
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot([]),
 
     CdkTableModule,
     CdkTreeModule,

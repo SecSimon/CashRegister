@@ -8,7 +8,6 @@ export class ApplicationStateService {
 
   constructor() {
     this.isMobileResolution = /Android|iPhone/i.test(navigator.userAgent);
-    console.log('isMobileResolution', this.isMobileResolution);
     // if (window.innerWidth < 768) {
     //   this.isMobileResolution = true;
     // } 

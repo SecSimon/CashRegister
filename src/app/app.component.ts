@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DataService } from './data.service';
+import { LocalStorageService, LocStorageKeys } from './local-storage.service';
 
 export enum Pages {
   Sale = 1,
@@ -17,7 +19,20 @@ export class AppComponent {
 
   public Page = Pages.Sale;
 
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService, private locStorage: LocalStorageService, private router: Router, private route: ActivatedRoute) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.route.queryParams.subscribe(params => {
+          if (params['defaultconfig']) {
+            setTimeout(() => {
+              const catStr = this.locStorage.Get(LocStorageKeys.Categories);
+              if (catStr == null || JSON.parse(catStr).length < 2) this.dataService.DefaultConfig();
+            }, 1000);
+          }
+        });
+      }
+    });
+  }
 
   ngOnDestroy() {
     this.dataService.Save();
