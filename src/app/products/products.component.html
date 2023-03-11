@@ -63,6 +63,13 @@
               <mat-option *ngFor="let cat of dataService.Categories" [value]="cat.ID">{{cat.Name}}</mat-option>
             </mat-select>
           </mat-form-field>
+          <br/>
+          <mat-form-field appearance="fill" style="width: 300px;">
+            <mat-label>Trigger</mat-label>
+            <mat-select [(ngModel)]="selectedItem.Trigger">
+              <mat-option *ngFor="let prod of GetPossibleTriggers(selectedItem)" [value]="prod.Name">{{prod.Name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </ng-container>
         <ng-container *ngIf="dataService.IsDiscount(selectedItem)">
           <mat-form-field appearance="fill" style="width: 100px;">

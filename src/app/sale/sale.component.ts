@@ -63,12 +63,31 @@ export class SaleComponent implements OnInit {
       }
       if (existing) {
         if (existing.Product) {
+          const prevQuantity = existing.Quantity;
           existing.Quantity = quantity;
           existing.Total = existing.Quantity * existing.Product.Price;
+          if (existing.Product?.Trigger) {
+            const diff = existing.Quantity - prevQuantity;
+            const triggerInBasket = this.Basket.find(x => x.Product.Name == existing.Product.Trigger);
+            if (triggerInBasket) {
+              triggerInBasket.Quantity += diff;
+              triggerInBasket.Total = triggerInBasket.Quantity * triggerInBasket.Product.Price; 
+            }
+            else if (diff > 0) {
+              const trigger = this.dataService.Products.find(x => x.Name == existing.Product.Trigger);
+              if (trigger) this.Basket.push({ Quantity: diff, Product: trigger, Total: trigger.Price * diff });
+            }
+          }
         }
       }
       else {
-        if (this.dataService.IsProduct(item)) this.Basket.push({ Quantity: quantity, Product: item, Total: item.Price * quantity });
+        if (this.dataService.IsProduct(item)) {
+          this.Basket.push({ Quantity: quantity, Product: item, Total: item.Price * quantity });
+          if (item.Trigger) {
+            const trigger = this.dataService.Products.find(x => x.Name == item.Trigger);
+            if (trigger) this.Basket.push({ Quantity: quantity, Product: trigger, Total: trigger.Price * quantity });
+          }
+        }
         else if (this.dataService.IsDiscount(item) && this.Basket.filter(x => x.Discount).length == 0) this.Basket.push({ Quantity: 1, Discount: item, Total: 0 });
       }
     };

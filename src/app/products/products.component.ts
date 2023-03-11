@@ -61,4 +61,8 @@ export class ProductsComponent implements OnInit {
     this.dataService.DeleteDiscount(dis);
     if (this.selectedItem == dis) this.selectedItem = null;
   }
+
+  public GetPossibleTriggers(prod: IProduct) {
+    return this.dataService.Products.filter(x => x.Name != prod.Name);
+  }
 }
