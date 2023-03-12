@@ -20,12 +20,12 @@
           <button mat-raised-button class="amountBtn" (click)="data.Cash = val">{{val}} €</button>
         </td>
         <td *ngIf="isLast && range.length+2<=colCount" colspan="2">
-          <button mat-raised-button class="amountBtn" style="width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
+          <button mat-raised-button class="amountBtn" style="width: calc(100% - 5px);" (click)="data.Cash = data.Total">Passend</button>
         </td>
       </tr>
       <tr *ngIf="ranges[ranges.length-1].length+2>colCount">
         <td colspan="100">
-          <button mat-raised-button class="amountBtn" style="width: -webkit-fill-available;" (click)="data.Cash = data.Total">Passend</button>
+          <button mat-raised-button class="amountBtn" style="width: calc(100% - 5px);" (click)="data.Cash = data.Total">Passend</button>
         </td>
       </tr>
     </table>

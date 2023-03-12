@@ -77,7 +77,7 @@
                 <span>Wechselgeld</span> <span style="float: right;">{{LastPayment.Change | currency:'EUR'}}</span>
               </div>
             </ng-container>
-            <button *ngIf="!LastPayment" mat-raised-button style="font-size: x-large; padding: 5px; width: -webkit-fill-available;" (click)="Pay()">Bezahlen</button>
+            <button *ngIf="!LastPayment" mat-raised-button style="font-size: x-large; padding: 5px; width: 100%;" (click)="Pay()">Bezahlen</button>
           </div>
         </div>
       </div>
@@ -165,7 +165,7 @@
                 <span>Wechselgeld</span> <span style="float: right;">{{LastPayment.Change | currency:'EUR'}}</span>
               </div>
             </ng-container>
-            <button *ngIf="!LastPayment" mat-raised-button style="margin-top: 7px; font-size: x-large; padding: 5px; width: -webkit-fill-available;" (click)="Pay()">Bezahlen</button>
+            <button *ngIf="!LastPayment" mat-raised-button style="margin-top: 7px; font-size: x-large; padding: 5px; width: 100%;" (click)="Pay()">Bezahlen</button>
           </div>
         </div>
       </div>
