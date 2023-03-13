@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DataService } from './data.service';
 import { LocalStorageService, LocStorageKeys } from './local-storage.service';
@@ -14,7 +14,7 @@ export enum Pages {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'Kasse';
 
   public Page = Pages.Sale;
@@ -32,6 +32,10 @@ export class AppComponent {
         });
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    document.body.classList.add('darkMode');
   }
 
   ngOnDestroy() {
