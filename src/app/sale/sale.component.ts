@@ -54,13 +54,13 @@ export class SaleComponent implements OnInit {
 
   public AddItemToBasketMouseUp(item: IProduct | IDiscount) {
     clearTimeout(this.isLongPressTimer);
+    if (this.LastPayment) {
+      this.LastPayment = null;
+      this.Basket = [];
+    }
 
     const existing = this.Basket.find(x => x.Product == item || x.Discount == item);
     const addItem = (quantity: number) => {
-      if (this.LastPayment) {
-        this.LastPayment = null;
-        this.Basket = [];
-      }
       if (existing) {
         if (existing.Product) {
           const prevQuantity = existing.Quantity;
