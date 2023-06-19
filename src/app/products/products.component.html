@@ -67,6 +67,7 @@
           <mat-form-field appearance="fill" style="width: 300px;">
             <mat-label>Trigger</mat-label>
             <mat-select [(ngModel)]="selectedItem.Trigger">
+              <mat-option>Keine</mat-option>
               <mat-option *ngFor="let prod of GetPossibleTriggers(selectedItem)" [value]="prod.Name">{{prod.Name}}</mat-option>
             </mat-select>
           </mat-form-field>
