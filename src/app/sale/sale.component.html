@@ -19,7 +19,7 @@
       </mat-toolbar>
   
       <div style="margin: 5px; display: block;">
-        <button mat-raised-button *ngFor="let product of Products" class="item" (mousedown)="AddItemToBasketMouseDown()" (mouseup)="AddItemToBasketMouseUp(product)">
+        <button mat-raised-button *ngFor="let product of Products" class="item" (mousedown)="AddItemToBasketMouseDown()" (mouseup)="AddItemToBasketMouseUp(product)" (contextmenu)="OnContextMenu($event, product)">
           <span style="font-size: x-large;">{{product.Name}}</span>
           <hr>
           <span style="font-size: large;">{{product.Price | currency:'EUR'}}</span>
