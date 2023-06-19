@@ -107,7 +107,7 @@
         </mat-form-field>
       </mat-toolbar>
   
-      <div style="overflow: auto; height: calc(100% - 56px);">
+      <div style="overflow: auto; height: calc(100% - 64px);">
         <div style="margin: 5px; display: block;">
           <button mat-raised-button *ngFor="let product of Products" class="item-mobile" (mousedown)="AddItemToBasketMouseDown()" (mouseup)="AddItemToBasketMouseUp(product)" (contextmenu)="OnContextMenu($event, product)">
             <span style="font-size: x-large;">{{product.Name}}</span>
