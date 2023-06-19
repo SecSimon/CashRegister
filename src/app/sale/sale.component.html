@@ -7,6 +7,9 @@
         </button>
         <span>Kasse</span>
         <span class="toolbar-spacer"></span>
+        <button mat-icon-button class="toolbar-icon" (click)="applicationState.IsMobileResolution = !applicationState.IsMobileResolution">
+          <mat-icon>splitscreen_bottom</mat-icon>
+        </button>
         <mat-form-field appearance="fill" style="font-size: small; margin-top: 15px; margin-right: -10px; width: 150px;">
           <mat-label>Kategorie</mat-label>
           <mat-select [(ngModel)]="SelectedCategory">
@@ -93,6 +96,9 @@
         </button>
         <span>Kasse</span>
         <span class="toolbar-spacer"></span>
+        <button mat-icon-button class="toolbar-icon" (click)="applicationState.IsMobileResolution = !applicationState.IsMobileResolution">
+          <mat-icon>splitscreen_right</mat-icon>
+        </button>
         <mat-form-field appearance="fill" style="font-size: small; margin-top: 15px; margin-right: -10px; width: 150px;">
           <mat-label>Kategorie</mat-label>
           <mat-select [(ngModel)]="SelectedCategory">

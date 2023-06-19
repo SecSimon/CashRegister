@@ -4,17 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApplicationStateService {
-  private isMobileResolution: boolean;
+
+  public IsMobileResolution: boolean;
 
   constructor() {
-    this.isMobileResolution = /Android|iPhone/i.test(navigator.userAgent);
-    // if (window.innerWidth < 768) {
-    //   this.isMobileResolution = true;
-    // } 
-    // else {
-    //   this.isMobileResolution = false;
-    // }
+    //this.IsMobileResolution = /Android|iPhone/i.test(navigator.userAgent);
+
+    this.detectResolution();
+    window.addEventListener('resize', (e) => { this.detectResolution(); });
   }
 
-  public get IsMobileResolution(): boolean { return this.isMobileResolution; }
+  private detectResolution() {
+    if (window.innerWidth < 1024) {
+      this.IsMobileResolution = true;
+    } 
+    else {
+      this.IsMobileResolution = false;
+    }
+  }
 }
