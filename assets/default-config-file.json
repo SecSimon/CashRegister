@@ -35,7 +35,7 @@
     },
     {
       "Name": "Bratwurstsemmel",
-      "Price": 3.5,
+      "Price": 3.6,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
@@ -49,7 +49,7 @@
     },
     {
       "Name": "Steaksemmel",
-      "Price": 4.9,
+      "Price": 5,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
@@ -72,7 +72,7 @@
     },
     {
       "Name": "Semmel",
-      "Price": 0.7,
+      "Price": 0.8,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
         "5140af08-3ced-486e-98b2-ccf687e40f53"
@@ -80,14 +80,14 @@
     },
     {
       "Name": "Kraut",
-      "Price": 2.5,
+      "Price": 2.6,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Kartoffelsalat",
-      "Price": 2.5,
+      "Price": 2.6,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
@@ -151,28 +151,28 @@
     },
     {
       "Name": "Maß",
-      "Price": 7.7,
+      "Price": 7.8,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Halbe",
-      "Price": 3.9,
+      "Price": 4,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Spezi, Limo, etc.",
-      "Price": 3.3,
+      "Price": 3.4,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Wasser",
-      "Price": 2.9,
+      "Price": 3,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
@@ -186,12 +186,11 @@
     },
     {
       "Name": "Weizen",
-      "Price": 4.2,
+      "Price": 4.3,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5",
         "f4420e24-adbe-4039-8e9e-5e91439da660"
-      ],
-      "Trigger": "Glaspfand"
+      ]
     },
     {
       "Name": "Glaspfand",
@@ -228,6 +227,13 @@
       "Price": 1.5,
       "CategoryIDs": [
         "3816b9eb-4a57-4323-b89d-2aaadeed1833"
+      ]
+    },
+    {
+      "Name": "Zwiebelkuchen",
+      "Price": 3.5,
+      "CategoryIDs": [
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
     }
   ],
