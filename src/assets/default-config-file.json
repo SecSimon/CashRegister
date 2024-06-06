@@ -28,14 +28,14 @@
   "Products": [
     {
       "Name": "Bratwurst",
-      "Price": 1.4,
+      "Price": 1.5,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Bratwurstsemmel",
-      "Price": 3.6,
+      "Price": 3.8,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
@@ -80,35 +80,35 @@
     },
     {
       "Name": "Kraut",
-      "Price": 2.6,
+      "Price": 2.7,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Kartoffelsalat",
-      "Price": 2.6,
+      "Price": 2.7,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Käse 100g",
-      "Price": 3,
+      "Price": 3.5,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
     },
     {
       "Name": "Obazda 100g",
-      "Price": 3,
+      "Price": 3.5,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
     },
     {
       "Name": "Fischsemmel",
-      "Price": 3.5,
+      "Price": 3.7,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
@@ -130,42 +130,42 @@
     },
     {
       "Name": "Jägermeister",
-      "Price": 2.5,
+      "Price": 3,
       "CategoryIDs": [
         "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
       ]
     },
     {
       "Name": "Pfand",
-      "Price": 0.5,
+      "Price": 1,
       "CategoryIDs": [
         "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
       ]
     },
     {
       "Name": "Pfand Rück",
-      "Price": -0.5,
+      "Price": -1,
       "CategoryIDs": [
         "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
       ]
     },
     {
       "Name": "Maß",
-      "Price": 7.8,
+      "Price": 8.2,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Halbe",
-      "Price": 4,
+      "Price": 4.3,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Spezi, Limo, etc.",
-      "Price": 3.4,
+      "Price": 3.5,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
@@ -179,14 +179,14 @@
     },
     {
       "Name": "Pils",
-      "Price": 3.5,
+      "Price": 3.8,
       "CategoryIDs": [
         "f4420e24-adbe-4039-8e9e-5e91439da660"
       ]
     },
     {
       "Name": "Weizen",
-      "Price": 4.3,
+      "Price": 4.5,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5",
         "f4420e24-adbe-4039-8e9e-5e91439da660"
@@ -216,14 +216,21 @@
       ]
     },
     {
-      "Name": "Kuchen/Torte",
+      "Name": "Kuchen",
       "Price": 2,
       "CategoryIDs": [
         "3816b9eb-4a57-4323-b89d-2aaadeed1833"
       ]
     },
     {
-      "Name": "Muffin",
+      "Name": "Torte",
+      "Price": 2.5,
+      "CategoryIDs": [
+        "3816b9eb-4a57-4323-b89d-2aaadeed1833"
+      ]
+    },
+    {
+      "Name": "Muffin/Küchl",
       "Price": 1.5,
       "CategoryIDs": [
         "3816b9eb-4a57-4323-b89d-2aaadeed1833"
@@ -231,7 +238,7 @@
     },
     {
       "Name": "Zwiebelkuchen",
-      "Price": 3.5,
+      "Price": 4.5,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
