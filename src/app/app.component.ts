@@ -29,6 +29,19 @@ export class AppComponent implements AfterViewInit {
               if (catStr == null || JSON.parse(catStr).length < 2) this.dataService.DefaultConfig();
             }, 1000);
           }
+          if (params['category']) {
+            setTimeout(() => {
+              const catStr = this.locStorage.Get(LocStorageKeys.Categories);
+              if (catStr) {
+                const cats = JSON.parse(catStr) as [];
+                const cat = cats.find(x => x['Name'] == params['category']);
+                if (cat) {
+                  this.locStorage.Set(LocStorageKeys.SelectedCategoryID, cat['ID'] as string);
+                }
+              }
+              console.log('cat', catStr);
+            }, 1500);
+          }
         });
       }
     });
