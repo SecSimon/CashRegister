@@ -282,7 +282,7 @@
     },
     {
       "Name": "Aperol",
-      "Price": 75,
+      "Price": 7.5,
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ],
