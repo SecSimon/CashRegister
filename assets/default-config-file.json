@@ -23,6 +23,10 @@
     {
       "ID": "f4420e24-adbe-4039-8e9e-5e91439da660",
       "Name": "Pilsstand"
+    },
+    {
+      "ID": "03603ebb-775b-4e64-bc29-cff12b6933f7",
+      "Name": "Weinbar"
     }
   ],
   "Products": [
@@ -157,6 +161,13 @@
       ]
     },
     {
+      "Name": "Weizen-Maß",
+      "Price": 8.7,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5"
+      ]
+    },
+    {
       "Name": "Halbe",
       "Price": 4.3,
       "CategoryIDs": [
@@ -241,6 +252,62 @@
       "Price": 4.5,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Senioren-Gutschein",
+      "Price": -3,
+      "CategoryIDs": [
+        "ed9ec645-7376-453b-85ea-a588032d60a5",
+        "5140af08-3ced-486e-98b2-ccf687e40f53",
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
+        "3816b9eb-4a57-4323-b89d-2aaadeed1833"
+      ]
+    },
+    {
+      "Name": "Weinglas",
+      "Price": 4,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ],
+      "Trigger": "Weinglaspfand"
+    },
+    {
+      "Name": "Weinflasche",
+      "Price": 15,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ],
+      "Trigger": "Weinglaspfand"
+    },
+    {
+      "Name": "Aperol",
+      "Price": 75,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ],
+      "Trigger": "Weinglaspfand"
+    },
+    {
+      "Name": "Lillet",
+      "Price": 6,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ],
+      "Trigger": "Weinglaspfand"
+    },
+    {
+      "Name": "Weinglaspfand",
+      "Price": 4,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ]
+    },
+    {
+      "Name": "Weinglaspfand Rück",
+      "Price": -4,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ]
     }
   ],
