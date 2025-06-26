@@ -32,28 +32,28 @@
   "Products": [
     {
       "Name": "Bratwurst",
-      "Price": 1.5,
+      "Price": 1.6,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Bratwurstsemmel",
-      "Price": 3.8,
+      "Price": 4,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Steak",
-      "Price": 4.2,
+      "Price": 4.5,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Steaksemmel",
-      "Price": 5,
+      "Price": 5.3,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
@@ -67,8 +67,16 @@
       ]
     },
     {
-      "Name": "Breze",
+      "Name": "Breze (Salz)",
       "Price": 1.3,
+      "CategoryIDs": [
+        "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
+        "5140af08-3ced-486e-98b2-ccf687e40f53"
+      ]
+    },
+    {
+      "Name": "Breze (Pfeffer)",
+      "Price": 1.5,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1",
         "5140af08-3ced-486e-98b2-ccf687e40f53"
@@ -84,28 +92,28 @@
     },
     {
       "Name": "Kraut",
-      "Price": 2.7,
+      "Price": 2.8,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Kartoffelsalat",
-      "Price": 2.7,
+      "Price": 2.8,
       "CategoryIDs": [
         "9d2a5be6-ef1b-4ca5-a5d4-b3715e35b6a1"
       ]
     },
     {
       "Name": "Käse 100g",
-      "Price": 3.5,
+      "Price": 3.6,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
     },
     {
       "Name": "Obazda 100g",
-      "Price": 3.5,
+      "Price": 3.6,
       "CategoryIDs": [
         "5140af08-3ced-486e-98b2-ccf687e40f53"
       ]
@@ -119,7 +127,7 @@
     },
     {
       "Name": "Schnaps",
-      "Price": 3.5,
+      "Price": 4,
       "CategoryIDs": [
         "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
       ],
@@ -127,7 +135,7 @@
     },
     {
       "Name": "Klopfer",
-      "Price": 2,
+      "Price": 2.5,
       "CategoryIDs": [
         "bcda24ee-d43a-473d-a3ae-9e29e27f79e4"
       ]
@@ -155,21 +163,21 @@
     },
     {
       "Name": "Maß",
-      "Price": 8.2,
+      "Price": 8.3,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Weizen-Maß",
-      "Price": 8.7,
+      "Price": 8.8,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
     },
     {
       "Name": "Halbe",
-      "Price": 4.3,
+      "Price": 4.4,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
@@ -183,7 +191,7 @@
     },
     {
       "Name": "Wasser",
-      "Price": 3,
+      "Price": 3.3,
       "CategoryIDs": [
         "ed9ec645-7376-453b-85ea-a588032d60a5"
       ]
@@ -221,7 +229,7 @@
     },
     {
       "Name": "Kaffee",
-      "Price": 2,
+      "Price": 2.5,
       "CategoryIDs": [
         "3816b9eb-4a57-4323-b89d-2aaadeed1833"
       ]
@@ -266,14 +274,14 @@
     },
     {
       "Name": "Weinglas",
-      "Price": 4,
+      "Price": 4.5,
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ],
       "Trigger": "Weinglaspfand"
     },
     {
-      "Name": "Weinflasche",
+      "Name": "Weinflasche (0,75l)",
       "Price": 15,
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
@@ -281,8 +289,16 @@
       "Trigger": "Weinglaspfand"
     },
     {
+      "Name": "Weinflasche (1l)",
+      "Price": 20,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ],
+      "Trigger": "Weinglaspfand"
+    },
+    {
       "Name": "Aperol",
-      "Price": 7.5,
+      "Price": 6,
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ],
@@ -298,14 +314,14 @@
     },
     {
       "Name": "Weinglaspfand",
-      "Price": 4,
+      "Price": 5,
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ]
     },
     {
       "Name": "Weinglaspfand Rück",
-      "Price": -4,
+      "Price": -5,
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ]
