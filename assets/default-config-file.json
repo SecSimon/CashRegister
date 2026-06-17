@@ -317,6 +317,14 @@
       "Trigger": "Weinglaspfand"
     },
     {
+      "Name": "Sarti",
+      "Price": 6.5,
+      "CategoryIDs": [
+        "03603ebb-775b-4e64-bc29-cff12b6933f7"
+      ],
+      "Trigger": "Weinglaspfand"
+    },
+    {
       "Name": "Weinglaspfand",
       "Price": 5,
       "CategoryIDs": [
@@ -329,14 +337,6 @@
       "CategoryIDs": [
         "03603ebb-775b-4e64-bc29-cff12b6933f7"
       ]
-    },
-    {
-      "Name": "Sarti",
-      "Price": 6.5,
-      "CategoryIDs": [
-        "03603ebb-775b-4e64-bc29-cff12b6933f7"
-      ],
-      "Trigger": "Weinglaspfand"
     },
     {
       "Name": "Weizen 3 Liter",
